@@ -1,6 +1,5 @@
 package hello;
 
-import static org.junit.Assert.*;
 import io.fourfinanceit.homework.Application;
 
 import org.junit.Test;
