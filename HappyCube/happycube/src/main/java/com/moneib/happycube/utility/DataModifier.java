@@ -6,17 +6,17 @@ import java.util.List;
 
 import com.moneib.happycube.entity.Piece;
 
-public class PiecesSeparator {
-	private static final PiecesSeparator PIECES_SEPARATOR = new PiecesSeparator();
+public class DataModifier {
+	private static final DataModifier DATA_MODIFIER = new DataModifier();
 
-	private PiecesSeparator() {
+	private DataModifier() {
 	}
 
-	public PiecesSeparator getSeparator() {
-		return PIECES_SEPARATOR;
+	public static DataModifier getInstance() {
+		return DATA_MODIFIER;
 	}
 
-	public List<Piece> separate(char[][] allPieces) {
+	public List<Piece> separateInput(char[][] allPieces) {
 		ArrayList<Piece> pieces = new ArrayList<>();
 
 		char[][] firstPiece = new char[5][5];
@@ -46,6 +46,16 @@ public class PiecesSeparator {
 		pieces.add(new Piece(sixthPiece));
 
 		return pieces;
+	}
+
+	public char[] reverseEdge(char[] edge) {
+		char[] reversedEdge = new char[edge.length];
+
+		for (int i = 0, j = edge.length - 1; i < edge.length && j >= 0; i++, j--) {
+			reversedEdge[i] = edge[j];
+		}
+
+		return reversedEdge;
 	}
 
 }

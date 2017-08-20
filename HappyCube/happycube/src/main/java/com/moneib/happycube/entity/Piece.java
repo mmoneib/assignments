@@ -1,16 +1,57 @@
 package com.moneib.happycube.entity;
 
+import com.moneib.happycube.utility.DataModifier;
+
 public class Piece {
-	char[][] structure;
-	char[] north;
-	char[] south;
-	char[] east;
-	char[] west;
+	private char[][] structure;
+	private char[] north;
+	private char[] south;
+	private char[] east;
+	private char[] west;
 
 	public Piece(char[][] structure) {
 		this.structure = structure;
 
 		initializeSides();
+	}
+
+	public Piece(Piece piece) {
+		north = piece.getNorth().clone();
+		south = piece.getSouth().clone();
+		west = piece.getWest().clone();
+		east = piece.getEast().clone();
+	}
+
+	public char[] getNorth() {
+		return north;
+	}
+
+	public void setNorth(char[] north) {
+		this.north = north;
+	}
+
+	public char[] getSouth() {
+		return south;
+	}
+
+	public void setSouth(char[] south) {
+		this.south = south;
+	}
+
+	public char[] getEast() {
+		return east;
+	}
+
+	public void setEast(char[] east) {
+		this.east = east;
+	}
+
+	public char[] getWest() {
+		return west;
+	}
+
+	public void setWest(char[] west) {
+		this.west = west;
 	}
 
 	private void initializeSides() {
@@ -21,7 +62,7 @@ public class Piece {
 	}
 
 	public void rotateClockWise() {
-		char[] temp = north;
+		char[] temp = north.clone();
 		north = west;
 		west = south;
 		south = east;
@@ -29,10 +70,19 @@ public class Piece {
 	}
 
 	public void rotateAntiClockwise() {
-		char[] temp = north;
+		char[] temp = north.clone();
 		north = east;
 		east = south;
 		south = west;
 		west = temp;
+	}
+
+	public void flip() {
+		char[] temp = north.clone();
+		north = south;
+		south = temp;
+		east = DataModifier.getInstance().reverseEdge(east);
+		west = DataModifier.getInstance().reverseEdge(west);
+
 	}
 }

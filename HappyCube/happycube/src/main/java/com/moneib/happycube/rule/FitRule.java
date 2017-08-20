@@ -1,6 +1,6 @@
 package com.moneib.happycube.rule;
 
-import com.moneib.happycube.entity.Piece;
+import com.moneib.happycube.entity.Cube;
 
 public class FitRule extends Rule {
 	private static final FitRule FIT_RULE = new FitRule();
@@ -13,22 +13,8 @@ public class FitRule extends Rule {
 	}
 
 	@Override
-	public boolean check(Piece piece1, Piece piece2) {
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
-				piece2.rotateClockWise();
-				
-				if(isCompliment(piece1,piece2)){
-					return true;
-				}
-			}
-			piece1.rotateClockWise();
-		}
-		
-		return false;
-	}
-	
-	private boolean isCompliment(Piece piece1, Piece piece2){
+	public boolean check(Cube cube) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
