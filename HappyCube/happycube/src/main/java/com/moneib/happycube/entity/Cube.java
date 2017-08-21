@@ -3,89 +3,73 @@ package com.moneib.happycube.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cube {
-	private Piece face1;
-	private Piece face2;
-	private Piece face3;
-	private Piece face4;
-	private Piece face5;
-	private Piece face6;
+import com.moneib.happycube.utility.Printable;
+
+public class Cube implements Printable {
+	private List<Piece> pieces = new ArrayList<>();
 
 	public Cube(Piece face1, Piece face2, Piece face3, Piece face4, Piece face5, Piece face6) {
-		this.face1 = face1;
-		this.face2 = face2;
-		this.face3 = face3;
-		this.face4 = face4;
-		this.face5 = face5;
-		this.face6 = face6;
-	}
-
-	public Cube(List<Piece> pieces) {
-		face1 = pieces.get(0);
-		face2 = pieces.get(1);
-		face3 = pieces.get(2);
-		face4 = pieces.get(3);
-		face5 = pieces.get(4);
-		face6 = pieces.get(5);
-	}
-
-	public Piece getFace1() {
-		return face1;
-	}
-
-	public void setFace1(Piece face1) {
-		this.face1 = face1;
-	}
-
-	public Piece getFace2() {
-		return face2;
-	}
-
-	public void setFace2(Piece face2) {
-		this.face2 = face2;
-	}
-
-	public Piece getFace3() {
-		return face3;
-	}
-
-	public void setFace3(Piece face3) {
-		this.face3 = face3;
-	}
-
-	public Piece getFace4() {
-		return face4;
-	}
-
-	public void setFace4(Piece face4) {
-		this.face4 = face4;
-	}
-
-	public Piece getFace5() {
-		return face5;
-	}
-
-	public void setFace5(Piece face5) {
-		this.face5 = face5;
-	}
-
-	public Piece getFace6() {
-		return face6;
-	}
-
-	public void setFace6(Piece face6) {
-		this.face6 = face6;
-	}
-
-	public List<Piece> getFaces() {
-		ArrayList<Piece> pieces = new ArrayList<>();
-
 		pieces.add(face1);
 		pieces.add(face2);
 		pieces.add(face3);
 		pieces.add(face4);
 		pieces.add(face5);
 		pieces.add(face6);
+	}
+
+	public Cube(List<Piece> pieces) {
+		this.pieces = pieces;
+	}
+
+	public Piece getFace1() {
+		return pieces.get(0);
+	}
+
+	public void setFace1(Piece face1) {
+		pieces.set(0, face1);
+	}
+
+	public Piece getFace2() {
+		return pieces.get(1);
+	}
+
+	public void setFace2(Piece face2) {
+		pieces.set(1, face2);
+	}
+
+	public Piece getFace3() {
+		return pieces.get(2);
+	}
+
+	public void setFace3(Piece face3) {
+		pieces.set(2, face3);
+	}
+
+	public Piece getFace4() {
+		return pieces.get(3);
+	}
+
+	public void setFace4(Piece face4) {
+		pieces.set(3, face4);
+	}
+
+	public Piece getFace5() {
+		return pieces.get(4);
+	}
+
+	public void setFace5(Piece face5) {
+		pieces.set(4, face5);
+	}
+
+	public Piece getFace6() {
+		return pieces.get(5);
+	}
+
+	public void setFace6(Piece face6) {
+		pieces.set(5, face6);
+	}
+
+	public List<Piece> getFaces() {
 
 		return pieces;
 	}
@@ -94,6 +78,59 @@ public class Cube {
 		Piece temp = new Piece(firstPiece);
 		firstPiece = secondPiece;
 		secondPiece = temp;
+	}
+
+	@Override
+	public void print() {
+
+		System.out.print(getFace5().getStructure()[0]);
+		System.out.print(getFace2().getStructure()[0]);
+		System.out.println(getFace6().getStructure()[0]);
+		System.out.print(getFace5().getStructure()[1]);
+		System.out.print(getFace2().getStructure()[1]);
+		System.out.println(getFace6().getStructure()[1]);
+		System.out.print(getFace5().getStructure()[2]);
+		System.out.print(getFace2().getStructure()[2]);
+		System.out.println(getFace6().getStructure()[2]);
+		System.out.print(getFace5().getStructure()[3]);
+		System.out.print(getFace2().getStructure()[3]);
+		System.out.println(getFace6().getStructure()[3]);
+		System.out.print(getFace5().getStructure()[4]);
+		System.out.print(getFace2().getStructure()[4]);
+		System.out.println(getFace6().getStructure()[4]);
+
+		System.out.print("     ");
+		System.out.println(getFace3().getStructure()[0]);
+		System.out.print("     ");
+		System.out.println(getFace3().getStructure()[1]);
+		System.out.print("     ");
+		System.out.println(getFace3().getStructure()[2]);
+		System.out.print("     ");
+		System.out.println(getFace3().getStructure()[3]);
+		System.out.print("     ");
+		System.out.println(getFace3().getStructure()[4]);
+
+		System.out.print("     ");
+		System.out.println(getFace4().getStructure()[0]);
+		System.out.print("     ");
+		System.out.println(getFace4().getStructure()[1]);
+		System.out.print("     ");
+		System.out.println(getFace4().getStructure()[2]);
+		System.out.print("     ");
+		System.out.println(getFace4().getStructure()[3]);
+		System.out.print("     ");
+		System.out.println(getFace4().getStructure()[4]);
+
+		System.out.print("     ");
+		System.out.println(getFace1().getStructure()[0]);
+		System.out.print("     ");
+		System.out.println(getFace1().getStructure()[1]);
+		System.out.print("     ");
+		System.out.println(getFace1().getStructure()[2]);
+		System.out.print("     ");
+		System.out.println(getFace1().getStructure()[3]);
+		System.out.print("     ");
+		System.out.println(getFace1().getStructure()[4]);
 	}
 
 }

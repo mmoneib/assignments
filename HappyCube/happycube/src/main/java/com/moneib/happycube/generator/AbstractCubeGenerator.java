@@ -10,6 +10,7 @@ public abstract class AbstractCubeGenerator {
 
 	public AbstractCubeGenerator(Progressor progressor, Rule rule) {
 		this.progressor = progressor;
+		this.rule = rule;
 	}
 
 	public abstract Cube generateCube(Cube cube);

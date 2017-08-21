@@ -1,12 +1,12 @@
 package com.moneib.happycube.generator;
 
 import com.moneib.happycube.entity.Cube;
-import com.moneib.happycube.generator.progressor.RandomProgressor;
-import com.moneib.happycube.rule.FitRule;
+import com.moneib.happycube.generator.progressor.Progressor;
+import com.moneib.happycube.rule.Rule;
 
-public class RandomCubeGenerator extends AbstractCubeGenerator {
+public class SimpleGenerator extends AbstractCubeGenerator {
 
-	public RandomCubeGenerator(RandomProgressor progressor, FitRule rule) {
+	public SimpleGenerator(Progressor progressor, Rule rule) {
 		super(progressor, rule);
 	}
 

@@ -33,9 +33,9 @@ public class DataModifier {
 		}
 
 		for (int i = 5; i < 10; i++) {
-			fourthPiece[i] = Arrays.copyOfRange(allPieces[i], 0, 5);
-			fifthPiece[i] = Arrays.copyOfRange(allPieces[i], 5, 10);
-			sixthPiece[i] = Arrays.copyOfRange(allPieces[i], 10, 15);
+			fourthPiece[i-5] = Arrays.copyOfRange(allPieces[i], 0, 5);
+			fifthPiece[i-5] = Arrays.copyOfRange(allPieces[i], 5, 10);
+			sixthPiece[i-5] = Arrays.copyOfRange(allPieces[i], 10, 15);
 		}
 
 		pieces.add(new Piece(firstPiece));
