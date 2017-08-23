@@ -1,5 +1,7 @@
 package com.moneib.happycube;
 
+import java.io.PrintWriter;
+
 import com.moneib.happycube.entity.Cube;
 import com.moneib.happycube.generator.SimpleGenerator;
 import com.moneib.happycube.generator.progressor.RandomProgressor;
@@ -24,10 +26,10 @@ public class Main {
 
 		SimpleGenerator generator = new SimpleGenerator(new RandomProgressor(), FitRule.getFitRule());
 
-		Cube newCube=generator.generateCube(cube);
+		Cube newCube = generator.generateCube(cube);
 
 		System.out.println(FitRule.getFitRule().check(newCube));
-		newCube.print();
+		newCube.print(new PrintWriter(System.out));
 	}
 
 }

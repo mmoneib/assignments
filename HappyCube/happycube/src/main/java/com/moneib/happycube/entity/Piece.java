@@ -4,24 +4,9 @@ import com.moneib.happycube.utility.DataModifier;
 
 public class Piece {
 	private char[][] structure;
-	// private char[] north;
-	// private char[] south;
-	// private char[] east;
-	// private char[] west;
 
 	public Piece(char[][] structure) {
 		this.structure = structure;
-
-		// initializeSides();
-	}
-
-	public Piece(Piece piece) {
-		/*
-		 * north = piece.getNorth().clone(); south = piece.getSouth().clone();
-		 * west = piece.getWest().clone(); east = piece.getEast().clone();
-		 */
-
-		structure = piece.structure.clone();
 	}
 
 	public char[] getNorth() {
@@ -60,7 +45,7 @@ public class Piece {
 		char[] west = new char[5];
 
 		for (int i = 0; i < west.length; i++) {
-			west[i] = structure[0][i];
+			west[i] = structure[i][0];
 		}
 
 		return west;
@@ -68,31 +53,27 @@ public class Piece {
 
 	public void setWest(char[] west) {
 		for (int i = 0; i < west.length; i++) {
-			structure[0][i] = west[i];
+			structure[i][0] = west[i];
 		}
 	}
 
-	/*
-	 * private void initializeSides() { north = structure[0]; south =
-	 * structure[4]; east = new char[] { structure[0][4], structure[1][4],
-	 * structure[2][4], structure[3][4], structure[4][4] }; west = new char[] {
-	 * structure[0][0], structure[1][0], structure[2][0], structure[3][0],
-	 * structure[4][0] }; }
-	 */
 	public void rotateClockWise() {
 		char[] temp = getNorth().clone();
-		setNorth(getWest());
+
+		setNorth(DataModifier.getInstance().reverseEdge(getWest()));
 		setWest(getSouth());
-		setSouth(getEast());
+		setSouth(DataModifier.getInstance().reverseEdge(getEast()));
 		setEast(temp);
 	}
 
 	public void flip() {
-		char[] temp = getNorth().clone();
-		setNorth(getSouth());
-		setSouth(temp);
+		char[] tempNorth = getNorth().clone();
+		char[] tempSouth = getSouth().clone();
+
 		setEast(DataModifier.getInstance().reverseEdge(getEast()));
 		setWest(DataModifier.getInstance().reverseEdge(getWest()));
+		setNorth(tempSouth);
+		setSouth(tempNorth);
 	}
 
 	public char[][] getStructure() {
@@ -101,5 +82,13 @@ public class Piece {
 
 	public void setStructure(char[][] structure) {
 		this.structure = structure;
+	}
+
+	@Override
+	public boolean equals(Object piece) {
+		if (this.getStructure().equals(((Piece) piece).getStructure()))
+			return true;
+		else
+			return false;
 	}
 }

@@ -1,5 +1,6 @@
 package com.moneib.happycube.entity;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,63 +75,66 @@ public class Cube implements Printable {
 		return pieces;
 	}
 
-	public void switchFaces(Piece firstPiece, Piece secondPiece) {
-		Piece temp = new Piece(firstPiece);
-		firstPiece = secondPiece;
-		secondPiece = temp;
+	@Override
+	public void print(PrintWriter writer) {
+
+		writer.print(getFace5().getStructure()[0]);
+		writer.print(getFace2().getStructure()[0]);
+		writer.println(getFace6().getStructure()[0]);
+		writer.print(getFace5().getStructure()[1]);
+		writer.print(getFace2().getStructure()[1]);
+		writer.println(getFace6().getStructure()[1]);
+		writer.print(getFace5().getStructure()[2]);
+		writer.print(getFace2().getStructure()[2]);
+		writer.println(getFace6().getStructure()[2]);
+		writer.print(getFace5().getStructure()[3]);
+		writer.print(getFace2().getStructure()[3]);
+		writer.println(getFace6().getStructure()[3]);
+		writer.print(getFace5().getStructure()[4]);
+		writer.print(getFace2().getStructure()[4]);
+		writer.println(getFace6().getStructure()[4]);
+
+		writer.print("     ");
+		writer.println(getFace3().getStructure()[0]);
+		writer.print("     ");
+		writer.println(getFace3().getStructure()[1]);
+		writer.print("     ");
+		writer.println(getFace3().getStructure()[2]);
+		writer.print("     ");
+		writer.println(getFace3().getStructure()[3]);
+		writer.print("     ");
+		writer.println(getFace3().getStructure()[4]);
+
+		writer.print("     ");
+		writer.println(getFace4().getStructure()[0]);
+		writer.print("     ");
+		writer.println(getFace4().getStructure()[1]);
+		writer.print("     ");
+		writer.println(getFace4().getStructure()[2]);
+		writer.print("     ");
+		writer.println(getFace4().getStructure()[3]);
+		writer.print("     ");
+		writer.println(getFace4().getStructure()[4]);
+
+		writer.print("     ");
+		writer.println(getFace1().getStructure()[0]);
+		writer.print("     ");
+		writer.println(getFace1().getStructure()[1]);
+		writer.print("     ");
+		writer.println(getFace1().getStructure()[2]);
+		writer.print("     ");
+		writer.println(getFace1().getStructure()[3]);
+		writer.print("     ");
+		writer.println(getFace1().getStructure()[4]);
+		writer.flush();
 	}
 
 	@Override
-	public void print() {
-
-		System.out.print(getFace5().getStructure()[0]);
-		System.out.print(getFace2().getStructure()[0]);
-		System.out.println(getFace6().getStructure()[0]);
-		System.out.print(getFace5().getStructure()[1]);
-		System.out.print(getFace2().getStructure()[1]);
-		System.out.println(getFace6().getStructure()[1]);
-		System.out.print(getFace5().getStructure()[2]);
-		System.out.print(getFace2().getStructure()[2]);
-		System.out.println(getFace6().getStructure()[2]);
-		System.out.print(getFace5().getStructure()[3]);
-		System.out.print(getFace2().getStructure()[3]);
-		System.out.println(getFace6().getStructure()[3]);
-		System.out.print(getFace5().getStructure()[4]);
-		System.out.print(getFace2().getStructure()[4]);
-		System.out.println(getFace6().getStructure()[4]);
-
-		System.out.print("     ");
-		System.out.println(getFace3().getStructure()[0]);
-		System.out.print("     ");
-		System.out.println(getFace3().getStructure()[1]);
-		System.out.print("     ");
-		System.out.println(getFace3().getStructure()[2]);
-		System.out.print("     ");
-		System.out.println(getFace3().getStructure()[3]);
-		System.out.print("     ");
-		System.out.println(getFace3().getStructure()[4]);
-
-		System.out.print("     ");
-		System.out.println(getFace4().getStructure()[0]);
-		System.out.print("     ");
-		System.out.println(getFace4().getStructure()[1]);
-		System.out.print("     ");
-		System.out.println(getFace4().getStructure()[2]);
-		System.out.print("     ");
-		System.out.println(getFace4().getStructure()[3]);
-		System.out.print("     ");
-		System.out.println(getFace4().getStructure()[4]);
-
-		System.out.print("     ");
-		System.out.println(getFace1().getStructure()[0]);
-		System.out.print("     ");
-		System.out.println(getFace1().getStructure()[1]);
-		System.out.print("     ");
-		System.out.println(getFace1().getStructure()[2]);
-		System.out.print("     ");
-		System.out.println(getFace1().getStructure()[3]);
-		System.out.print("     ");
-		System.out.println(getFace1().getStructure()[4]);
+	public boolean equals(Object cube) {
+		if (this.pieces.equals(((Cube) cube).getFace6()))
+			return true;
+		else
+			return false;
 	}
 
 }

@@ -8,7 +8,7 @@ import com.moneib.happycube.entity.Cube;
 import com.moneib.happycube.entity.Piece;
 
 public class RandomProgressor implements Progressor {
-	Random random = new Random();
+	private Random random = new Random();
 
 	@Override
 	public void nextState(Cube cube) {
