@@ -30,18 +30,24 @@ public class CubeTest {
 
 	@BeforeClass
 	public static void preparePieces() {
-		structure1 = new char[][] { { 'o', ' ', 'o', 'o', ' ' }, { 'o', 'o', 'o', 'o', 'o' },
-				{ ' ', 'o', 'o', 'o', 'o' }, { 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', ' ' } };
-		structure2 = new char[][] { { ' ', ' ', 'o', ' ', ' ' }, { 'o', 'o', 'o', 'o', 'o' },
-				{ ' ', 'o', 'o', 'o', 'o' }, { 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' } };
-		structure3 = new char[][] { { 'o', ' ', 'o', 'o', ' ' }, { 'o', 'o', 'o', 'o', 'o' },
-				{ ' ', 'o', 'o', 'o', 'o' }, { 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', ' ' } };
-		structure4 = new char[][] { { 'o', ' ', ' ', ' ', ' ' }, { 'o', 'o', 'o', 'o', 'o' },
-				{ ' ', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', 'o' } };
-		structure5 = new char[][] { { 'o', ' ', 'o', ' ', ' ' }, { 'o', 'o', 'o', 'o', 'o' },
-				{ ' ', 'o', 'o', 'o', 'o' }, { 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', ' ' } };
-		structure6 = new char[][] { { ' ', ' ', 'o', ' ', ' ' }, { 'o', 'o', 'o', 'o', 'o' },
-				{ ' ', 'o', 'o', 'o', 'o' }, { 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', ' ', 'o', 'o' } };
+		structure1 = new char[][] { { 'o', ' ', 'o', 'o', ' ' },
+				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' },
+				{ 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', ' ' } };
+		structure2 = new char[][] { { ' ', ' ', 'o', ' ', ' ' },
+				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' },
+				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' } };
+		structure3 = new char[][] { { 'o', ' ', 'o', 'o', ' ' },
+				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' },
+				{ 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', ' ' } };
+		structure4 = new char[][] { { 'o', ' ', ' ', ' ', ' ' },
+				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' },
+				{ ' ', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', 'o' } };
+		structure5 = new char[][] { { 'o', ' ', 'o', ' ', ' ' },
+				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' },
+				{ 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', ' ' } };
+		structure6 = new char[][] { { ' ', ' ', 'o', ' ', ' ' },
+				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' },
+				{ 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', ' ', 'o', 'o' } };
 
 		pieces.add(new Piece(structure1));
 		pieces.add(new Piece(structure2));
@@ -58,7 +64,8 @@ public class CubeTest {
 
 	@Test
 	public void testCubeConstructPieceByPieces() {
-		cube = new Cube(pieces.get(0), pieces.get(1), pieces.get(2), pieces.get(3), pieces.get(4), pieces.get(5));
+		cube = new Cube(pieces.get(0), pieces.get(1), pieces.get(2),
+				pieces.get(3), pieces.get(4), pieces.get(5));
 
 		assertEquals(pieces.get(0), cube.getFace1());
 		assertEquals(pieces.get(1), cube.getFace2());
@@ -94,37 +101,41 @@ public class CubeTest {
 				BufferedReader reader = new BufferedReader(new FileReader(file));) {
 			cube.print(writer);
 			int count = 0;
-			Iterator<String> linesIt = reader.lines().iterator();
-			while (linesIt.hasNext()) {
-				lines[count] = linesIt.next();
-				count++;
+			String line = "";
+			while ((line = reader.readLine()) != null) {
+				lines[count++] = line;
 			}
 		} catch (IOException e) {
 			fail(e.getMessage());
 		}
 
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(structure5[0]).append(structure2[0]).append(structure6[0]);
+		stringBuilder.append(structure5[0]).append(structure2[0])
+				.append(structure6[0]);
 		assertEquals(stringBuilder.toString(), lines[0]);
 
 		stringBuilder.delete(0, stringBuilder.length());
 
-		stringBuilder.append(structure5[1]).append(structure2[1]).append(structure6[1]);
+		stringBuilder.append(structure5[1]).append(structure2[1])
+				.append(structure6[1]);
 		assertEquals(stringBuilder.toString(), lines[1]);
 
 		stringBuilder.delete(0, stringBuilder.length());
 
-		stringBuilder.append(structure5[2]).append(structure2[2]).append(structure6[2]);
+		stringBuilder.append(structure5[2]).append(structure2[2])
+				.append(structure6[2]);
 		assertEquals(stringBuilder.toString(), lines[2]);
 
 		stringBuilder.delete(0, stringBuilder.length());
 
-		stringBuilder.append(structure5[3]).append(structure2[3]).append(structure6[3]);
+		stringBuilder.append(structure5[3]).append(structure2[3])
+				.append(structure6[3]);
 		assertEquals(stringBuilder.toString(), lines[3]);
 
 		stringBuilder.delete(0, stringBuilder.length());
 
-		stringBuilder.append(structure5[4]).append(structure2[4]).append(structure6[4]);
+		stringBuilder.append(structure5[4]).append(structure2[4])
+				.append(structure6[4]);
 		assertEquals(stringBuilder.toString(), lines[4]);
 
 		stringBuilder.delete(0, stringBuilder.length());
@@ -202,5 +213,4 @@ public class CubeTest {
 		stringBuilder.append("     ").append(structure1[4]);
 		assertEquals(stringBuilder.toString(), lines[19]);
 	}
-
 }
