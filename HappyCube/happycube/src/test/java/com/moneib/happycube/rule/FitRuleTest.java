@@ -14,7 +14,7 @@ public class FitRuleTest {
 
 	@BeforeClass
 	public static void setUpRule() {
-		fitRule = FitRule.getFitRule();
+		fitRule = FitRule.getInstance();
 	}
 
 	@Test

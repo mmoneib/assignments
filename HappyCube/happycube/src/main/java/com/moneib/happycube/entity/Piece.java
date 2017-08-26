@@ -2,7 +2,7 @@ package com.moneib.happycube.entity;
 
 import com.moneib.happycube.utility.DataModifier;
 
-public class Piece {
+public class Piece extends AbstractEntity {
 	private char[][] structure;
 
 	public Piece(char[][] structure) {
