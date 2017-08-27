@@ -6,17 +6,21 @@ import java.util.List;
 
 import com.moneib.happycube.entity.Piece;
 
+/**
+ * The Class DataModifier is a utility class providing methods to manipulate
+ * data.
+ */
 public class DataModifier {
-	private static final DataModifier DATA_MODIFIER = new DataModifier();
 
-	private DataModifier() {
-	}
-
-	public static DataModifier getInstance() {
-		return DATA_MODIFIER;
-	}
-
-	public List<Piece> separateInput(char[][] allPieces) {
+	/**
+	 * Separate the input combined representation of pieces into 6 distinct
+	 * structures.
+	 *
+	 * @param allPieces
+	 *            combined representation of all the pieces.
+	 * @return the list of 6 pieces.
+	 */
+	public static List<Piece> separateInput(char[][] allPieces) {
 		ArrayList<Piece> pieces = new ArrayList<>();
 
 		char[][] firstPiece = new char[5][5];
@@ -33,9 +37,9 @@ public class DataModifier {
 		}
 
 		for (int i = 5; i < 10; i++) {
-			fourthPiece[i-5] = Arrays.copyOfRange(allPieces[i], 0, 5);
-			fifthPiece[i-5] = Arrays.copyOfRange(allPieces[i], 5, 10);
-			sixthPiece[i-5] = Arrays.copyOfRange(allPieces[i], 10, 15);
+			fourthPiece[i - 5] = Arrays.copyOfRange(allPieces[i], 0, 5);
+			fifthPiece[i - 5] = Arrays.copyOfRange(allPieces[i], 5, 10);
+			sixthPiece[i - 5] = Arrays.copyOfRange(allPieces[i], 10, 15);
 		}
 
 		pieces.add(new Piece(firstPiece));
@@ -48,7 +52,15 @@ public class DataModifier {
 		return pieces;
 	}
 
-	public char[] reverseEdge(char[] edge) {
+	/**
+	 * Reverse a representation of an edge of a piece. This, in fact, is just a
+	 * reverser of an array, since Java does not provide a ready-made reverser.
+	 *
+	 * @param edge
+	 *            the original edge.
+	 * @return the reversed edge.
+	 */
+	public static char[] reverseEdge(char[] edge) {
 		char[] reversedEdge = new char[edge.length];
 
 		for (int i = 0, j = edge.length - 1; i < edge.length && j >= 0; i++, j--) {
@@ -57,6 +69,5 @@ public class DataModifier {
 
 		return reversedEdge;
 	}
-	
 
 }

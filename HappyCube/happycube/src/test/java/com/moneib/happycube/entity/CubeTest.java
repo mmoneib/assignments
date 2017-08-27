@@ -9,14 +9,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import com.moneib.happycube.entity.Cube;
-import com.moneib.happycube.entity.Piece;
 
 public class CubeTest {
 	private static ArrayList<Piece> pieces = new ArrayList<>();
@@ -30,24 +27,18 @@ public class CubeTest {
 
 	@BeforeClass
 	public static void preparePieces() {
-		structure1 = new char[][] { { 'o', ' ', 'o', 'o', ' ' },
-				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' },
-				{ 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', ' ' } };
-		structure2 = new char[][] { { ' ', ' ', 'o', ' ', ' ' },
-				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' },
-				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' } };
-		structure3 = new char[][] { { 'o', ' ', 'o', 'o', ' ' },
-				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' },
-				{ 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', ' ' } };
-		structure4 = new char[][] { { 'o', ' ', ' ', ' ', ' ' },
-				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' },
-				{ ' ', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', 'o' } };
-		structure5 = new char[][] { { 'o', ' ', 'o', ' ', ' ' },
-				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' },
-				{ 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', ' ' } };
-		structure6 = new char[][] { { ' ', ' ', 'o', ' ', ' ' },
-				{ 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' },
-				{ 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', ' ', 'o', 'o' } };
+		structure1 = new char[][] { { 'o', ' ', 'o', 'o', ' ' }, { 'o', 'o', 'o', 'o', 'o' },
+				{ ' ', 'o', 'o', 'o', 'o' }, { 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', ' ' } };
+		structure2 = new char[][] { { ' ', ' ', 'o', ' ', ' ' }, { 'o', 'o', 'o', 'o', 'o' },
+				{ ' ', 'o', 'o', 'o', 'o' }, { 'o', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', 'o' } };
+		structure3 = new char[][] { { 'o', ' ', 'o', 'o', ' ' }, { 'o', 'o', 'o', 'o', 'o' },
+				{ ' ', 'o', 'o', 'o', 'o' }, { 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', ' ' } };
+		structure4 = new char[][] { { 'o', ' ', ' ', ' ', ' ' }, { 'o', 'o', 'o', 'o', 'o' },
+				{ ' ', 'o', 'o', 'o', 'o' }, { ' ', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', 'o' } };
+		structure5 = new char[][] { { 'o', ' ', 'o', ' ', ' ' }, { 'o', 'o', 'o', 'o', 'o' },
+				{ ' ', 'o', 'o', 'o', 'o' }, { 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', 'o', 'o', ' ' } };
+		structure6 = new char[][] { { ' ', ' ', 'o', ' ', ' ' }, { 'o', 'o', 'o', 'o', 'o' },
+				{ ' ', 'o', 'o', 'o', 'o' }, { 'o', 'o', 'o', 'o', ' ' }, { ' ', 'o', ' ', 'o', 'o' } };
 
 		pieces.add(new Piece(structure1));
 		pieces.add(new Piece(structure2));
@@ -64,8 +55,7 @@ public class CubeTest {
 
 	@Test
 	public void testCubeConstructPieceByPieces() {
-		cube = new Cube(pieces.get(0), pieces.get(1), pieces.get(2),
-				pieces.get(3), pieces.get(4), pieces.get(5));
+		cube = new Cube(pieces.get(0), pieces.get(1), pieces.get(2), pieces.get(3), pieces.get(4), pieces.get(5));
 
 		assertEquals(pieces.get(0), cube.getFace1());
 		assertEquals(pieces.get(1), cube.getFace2());
@@ -85,6 +75,13 @@ public class CubeTest {
 		assertEquals(pieces.get(3), cube.getFace4());
 		assertEquals(pieces.get(4), cube.getFace5());
 		assertEquals(pieces.get(5), cube.getFace6());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testCubeConstructByListOfPieceInvalid() {
+		List<Piece> invalidPieces = new ArrayList<>();
+
+		cube = new Cube(invalidPieces);
 	}
 
 	@Test
@@ -110,32 +107,27 @@ public class CubeTest {
 		}
 
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(structure5[0]).append(structure2[0])
-				.append(structure6[0]);
+		stringBuilder.append(structure5[0]).append(structure2[0]).append(structure6[0]);
 		assertEquals(stringBuilder.toString(), lines[0]);
 
 		stringBuilder.delete(0, stringBuilder.length());
 
-		stringBuilder.append(structure5[1]).append(structure2[1])
-				.append(structure6[1]);
+		stringBuilder.append(structure5[1]).append(structure2[1]).append(structure6[1]);
 		assertEquals(stringBuilder.toString(), lines[1]);
 
 		stringBuilder.delete(0, stringBuilder.length());
 
-		stringBuilder.append(structure5[2]).append(structure2[2])
-				.append(structure6[2]);
+		stringBuilder.append(structure5[2]).append(structure2[2]).append(structure6[2]);
 		assertEquals(stringBuilder.toString(), lines[2]);
 
 		stringBuilder.delete(0, stringBuilder.length());
 
-		stringBuilder.append(structure5[3]).append(structure2[3])
-				.append(structure6[3]);
+		stringBuilder.append(structure5[3]).append(structure2[3]).append(structure6[3]);
 		assertEquals(stringBuilder.toString(), lines[3]);
 
 		stringBuilder.delete(0, stringBuilder.length());
 
-		stringBuilder.append(structure5[4]).append(structure2[4])
-				.append(structure6[4]);
+		stringBuilder.append(structure5[4]).append(structure2[4]).append(structure6[4]);
 		assertEquals(stringBuilder.toString(), lines[4]);
 
 		stringBuilder.delete(0, stringBuilder.length());

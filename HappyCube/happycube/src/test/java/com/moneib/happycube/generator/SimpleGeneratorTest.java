@@ -234,8 +234,8 @@ public class SimpleGeneratorTest {
 								: 0 + newCube.getFace1().getStructure()[4][4] == 'o' ? 1 : 0);
 	}
 
-	protected void testGenerateCubeWithFittingEdgesOf(Cube cube) {
-		Cube newCube = gen.generateCube(cube1);
+	protected void testGenerateCubeWithFittingEdgesOf(Cube newCube) {
+		//Cube newCube = gen.generateCube(cube);
 		int maxToothPerEdge = newCube.getFace1().getStructure().length - 1;
 		String testMessage = "Unfitting teeth encountered.";
 

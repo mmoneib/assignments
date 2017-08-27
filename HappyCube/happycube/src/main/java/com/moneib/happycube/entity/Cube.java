@@ -74,6 +74,9 @@ public class Cube extends AbstractEntity implements Printable {
 	 *            the list of pieces comprising the cube.
 	 */
 	public Cube(List<Piece> pieces) {
+		if (pieces.size() != 6) {
+			throw new IllegalArgumentException("Illegal number of pieces for a cube.");
+		}
 		this.pieces = pieces;
 	}
 

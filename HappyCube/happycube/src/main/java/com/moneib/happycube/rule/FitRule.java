@@ -85,16 +85,16 @@ public class FitRule extends AbstractRule {
 				&& checkEdge(cube.getFace4().getSouth(), cube.getFace1().getNorth())
 				&& checkEdge(cube.getFace1().getWest(), cube.getFace5().getNorth())
 				&& checkEdge(cube.getFace1().getEast(),
-						DataModifier.getInstance().reverseEdge(cube.getFace6().getNorth()))
+						DataModifier.reverseEdge(cube.getFace6().getNorth()))
 				&& checkEdge(cube.getFace2().getWest(), cube.getFace5().getEast())
 				&& checkEdge(cube.getFace2().getEast(), cube.getFace6().getWest())
 				&& checkEdge(cube.getFace3().getWest(),
-						DataModifier.getInstance().reverseEdge(cube.getFace5().getSouth()))
+						DataModifier.reverseEdge(cube.getFace5().getSouth()))
 				&& checkEdge(cube.getFace3().getEast(), cube.getFace6().getSouth())
 				&& checkEdge(cube.getFace4().getWest(),
-						DataModifier.getInstance().reverseEdge(cube.getFace5().getWest()))
+						DataModifier.reverseEdge(cube.getFace5().getWest()))
 				&& checkEdge(cube.getFace4().getEast(),
-						DataModifier.getInstance().reverseEdge(cube.getFace6().getEast()));
+						DataModifier.reverseEdge(cube.getFace6().getEast()));
 	}
 
 	/**
