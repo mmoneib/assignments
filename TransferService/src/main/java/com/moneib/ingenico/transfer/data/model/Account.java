@@ -107,4 +107,22 @@ public class Account {
 		this.balance = balance;
 	}
 
+	/**
+	 * Compares the current Account object to another one. It returns true if
+	 * all attributes are equal.
+	 *
+	 * @param obj
+	 *            the compared Account object
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		Account comparedAccount = (Account) obj;
+
+		if (this.id == comparedAccount.getId() && this.balance == comparedAccount.getBalance()
+				&& this.name.equals(comparedAccount.getName())) {
+			return true;
+		}
+		return false;
+	}
+
 }

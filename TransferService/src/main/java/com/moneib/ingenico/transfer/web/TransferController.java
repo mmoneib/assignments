@@ -39,10 +39,7 @@ public class TransferController {
 	public ResponseEntity<Transfer> performTransfer(@RequestParam String source, @RequestParam String destination,
 			@RequestParam String amount) {
 		Transfer transfer = service.makeTransfer(source, destination, Double.valueOf(amount));
-
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("TransactionID", String.valueOf(transfer.getId()));
-
+		
 		return new ResponseEntity<Transfer>(transfer, HttpStatus.OK);
 	}
 }
