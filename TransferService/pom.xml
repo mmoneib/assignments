@@ -5,17 +5,23 @@
 
 	<groupId>com.moneib.ingenico</groupId>
 	<artifactId>TransferService</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0.RELEASE</version>
 	<packaging>jar</packaging>
 
 	<name>TransferService</name>
 	<description>Demo project for Spring Boot</description>
+	<developers>
+		<developer>
+			<name>Muhammad Monieb</name>
+			<email>mmoneib  @  gmail  .  com</email>
+		</developer>
+	</developers>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.7.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>

@@ -1,0 +1,26 @@
+Project: Transfer Service for Ingenico epayments
+Developer: Muhammad Moneib
+
+*Introduction:
+In this readme, I will provide a brief walkthrough for the design and implementation of the Transfer Service.
+
+*Technologies:
+Spring Boot for building the REST API and DD backend with the following dependencies:
+ 1-H2 Database: The in-memory flavor was used to persist the data, which is deleted after the application is exited.
+ 2-Spring Boot Security: This is used to provide a minimal security layer (I thought it was enough for the demonstration) using a username and a password through Basic Authentication.
+ 3-Spring Boot Data JPA: The persistence layer uses Hibernate to connect with the database.
+ 4-Spring Boot Test: Testing is done through JUnit and Mockito using Spring Boot's unit test environment.
+ 5-Spring Boot Web: The core of the infrastructure used to develop the RESTful API.
+ 
+ *Design Decisions:
+ The service was developed according to the DDD principles. I limited the cross functionality to the service layer, exposing each service to the others when needed. This maintain the one-to-one relationship between each service and its repository and avoids the bubbling of business logic to the controllers. As for the endpoints, I resorted to use POST parameters instead of Path parameters for the limited purpose of the service.
+ 
+ *Steps of Execution
+ 1-This is a Maven project. You need to get build the project through the "install" goal. If you use Eclipse, you might need to use UpdateProject from the Maven context menu first.
+ 2-Run the main class com,omoneib.ingenice.transfer.TransferServiceApplication.
+ 3-Use the user name "user" and the password "passw0rd" when needed, usually when calling the endpoints.
+ 4-The endpoint for creating accounts: localhost:8080/accounts/add. Please either use a tool like Postman or com.moneib.ingenico.transfer.service.AccountControllerTest to test the API. Don't forget to include the authentication as well as the parameters ("name" (account name), and "balance" (euros in account)).
+ 5-The endpoint for creating transfers: localhost:8080/transfers/transfer. Please either use a tool like Postman or com.moneib.ingenico.transfer.service.TransferControllerTest to test the API. Don't forget to include the authentication as well as the parameters ("source" (account name), "destination" (account name), and "amount" (Euros transferred)).
+ 
+ *Contact Me
+ For any more info, please contact me.
